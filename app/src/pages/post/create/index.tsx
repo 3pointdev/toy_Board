@@ -7,7 +7,7 @@ import DefaultButton from "src/components/button/default-button";
 import SubPageContainer from "src/components/container/sub-page-container";
 import PostForm from "src/components/post/post-form";
 import { PostDto } from "src/dto/post.dto";
-import { PostModel } from "src/model/post.dto";
+import { PostModel } from "src/model/post.model";
 
 interface IProps {
   apiUrl: string;

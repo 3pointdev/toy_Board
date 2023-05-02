@@ -1,5 +1,5 @@
 import { ChangeEventHandler, ReactElement } from "react";
-import { PostModel } from "src/model/post.dto";
+import { PostModel } from "src/model/post.model";
 import DefaultInput from "../input/default-input";
 import DefaultTextarea from "../input/default-textarea";
 

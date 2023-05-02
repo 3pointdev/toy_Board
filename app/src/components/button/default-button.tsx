@@ -1,7 +1,7 @@
 import { MouseEventHandler, ReactElement } from "react";
 
 interface IProps {
-  title: string | string[];
+  title: string | string[] | ReactElement;
   onClick: MouseEventHandler;
   addClass?: string;
 }
@@ -16,7 +16,7 @@ export default function DefaultButton(props: IProps): ReactElement {
 
   return (
     <button
-      className={`py-2 px-4 rounded-md shadow-md mr-2 ${addClass}`}
+      className={`py-2 px-4 rounded-md shadow-md ${addClass}`}
       onClick={onClick}
     >
       {title}
