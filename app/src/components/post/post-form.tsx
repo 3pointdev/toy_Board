@@ -10,10 +10,10 @@ interface IProps {
 }
 
 /**
- * 게시판 수정
+ * 게시판 수정 & 작성
  * @param props.post 게시물 정보 객체
  */
-export default function PostModify(props: IProps): ReactElement {
+export default function PostForm(props: IProps): ReactElement {
   const { title, content } = props.post;
   const { onChangeTitle, onChangeContent } = props;
 

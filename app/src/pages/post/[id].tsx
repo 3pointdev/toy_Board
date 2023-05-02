@@ -18,13 +18,13 @@ interface IProps {
  * 게시판 상세페이지
  * @param props.post User가 선택한 게시물 정보
  */
-export default function PostView(props: IProps): ReactElement {
-  const [post, setPost] = useState<PostDto>(new PostDto());
+export default function PostView({ post, apiUrl }: IProps): ReactElement {
+  const [newPost, setNewPost] = useState<PostDto>(new PostDto());
   const router = useRouter();
 
   //Mount 후 서버로부터 받아온 정보를 State에 PostDto에 맞추어 저장함
   useEffect(() => {
-    setPost(plainToInstance(PostDto, props.post));
+    setNewPost(plainToInstance(PostDto, post));
   }, []);
 
   //게시물 수정 이벤트
@@ -36,11 +36,11 @@ export default function PostView(props: IProps): ReactElement {
       placeholder: "비밀번호를 입력해 주세요.",
       confirm: "수정",
       callback: () => {
-        router.push(`/post/modify/${post.id}`);
+        router.push(`/post/modify/${newPost.id}`);
       },
       error: "비밀번호가 올바르지 않습니다.",
       validation: (value, resolve) => {
-        if (value !== post.password) {
+        if (value !== newPost.password) {
           resolve("비밀번호가 올바르지 않습니다.");
         } else {
           resolve();
@@ -62,7 +62,7 @@ export default function PostView(props: IProps): ReactElement {
       },
       error: "비밀번호가 올바르지 않습니다.",
       validation: (value, resolve) => {
-        if (value !== post.password) {
+        if (value !== newPost.password) {
           resolve("비밀번호가 올바르지 않습니다.");
         } else {
           resolve();
@@ -74,7 +74,7 @@ export default function PostView(props: IProps): ReactElement {
   //Post 삭제 api
   const deletePost = async () => {
     await axios
-      .delete<PostDto>(`${props.apiUrl}/post/${post.id}`)
+      .delete<PostDto>(`${apiUrl}/post/${post.id}`)
       .then((result: AxiosResponse) => {
         Alert.alert("성공적으로 삭제하였습니다.", () => router.replace("/"));
       })
@@ -86,7 +86,7 @@ export default function PostView(props: IProps): ReactElement {
 
   return (
     <SubPageContainer title={"게시물"}>
-      <PostDetail post={post} />
+      <PostDetail post={newPost} />
       <div className="flex justify-between">
         <DefaultButton
           addClass="bg-blue-500 hover:bg-blue-600 text-white"
