@@ -11,4 +11,5 @@ export class PostDto {
   public readonly createdAt: string = "";
 
   public readonly password: string = "";
+  public readonly author: string = "";
 }

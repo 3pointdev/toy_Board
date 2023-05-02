@@ -42,6 +42,12 @@ export default function PostModifyView({ apiUrl }: IProps): ReactElement {
     setNewPostModel({ ...newPostModel, title: value });
   };
 
+  // 게시물 작성 - 작성자 변경 이벤트
+  const onChangeAuthor = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setNewPostModel({ ...newPostModel, author: value });
+  };
+
   // 게시물 작성 - 내용 변경 이벤트
   const onChangeContent = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = e.target;
@@ -59,6 +65,7 @@ export default function PostModifyView({ apiUrl }: IProps): ReactElement {
         post={newPostModel}
         onChangeTitle={onChangeTitle}
         onChangeContent={onChangeContent}
+        onChangeAuthor={onChangeAuthor}
       />
       <div className="flex justify-center">
         <DefaultButton

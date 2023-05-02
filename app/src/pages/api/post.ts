@@ -23,11 +23,17 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
     res.status(200).json(responseData);
   } else if (req.method === "POST") {
-    const { title, content, password } = req.body;
+    const { author, title, content, password } = req.body;
     const id = post.posts.length + 1;
     const created_at = new Date().toJSON();
-    const newPassword = password ?? `password${id}`;
-    const newPost = { id, title, content, created_at, newPassword };
+    const newPost = {
+      id,
+      title,
+      content,
+      created_at,
+      password,
+      author,
+    };
     post.posts.push(newPost);
 
     // post.json 파일에 변경된 데이터 저장
