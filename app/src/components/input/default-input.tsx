@@ -3,11 +3,12 @@ import { ChangeEvent, ReactElement } from "react";
 interface InputProps {
   type: "text" | "number" | "password";
   name: string;
-  id: string;
-  label: string;
+  id?: string;
+  label?: string;
   placeholder?: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   value: string;
+  addClass?: string;
 }
 
 /**
@@ -28,12 +29,15 @@ export default function DefaultInput({
   placeholder,
   onChange,
   value,
+  addClass,
 }: InputProps): ReactElement {
   return (
     <div className="mb-4">
-      <label htmlFor={id} className="block text-gray-700 font-bold mb-2">
-        {label}
-      </label>
+      {label && (
+        <label htmlFor={id} className="block text-gray-700 font-bold mb-2">
+          {label}
+        </label>
+      )}
       <input
         type={type}
         name={name}
@@ -41,7 +45,7 @@ export default function DefaultInput({
         placeholder={placeholder}
         onChange={onChange}
         value={value}
-        className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${addClass}`}
       />
     </div>
   );

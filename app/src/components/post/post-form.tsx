@@ -1,5 +1,5 @@
 import { ChangeEventHandler, ReactElement } from "react";
-import { PostModel } from "src/model/post.dto";
+import { PostModel } from "src/model/post.model";
 import DefaultInput from "../input/default-input";
 import DefaultTextarea from "../input/default-textarea";
 
@@ -7,6 +7,7 @@ interface IProps {
   post: PostModel;
   onChangeTitle: ChangeEventHandler;
   onChangeContent: ChangeEventHandler;
+  onChangeAuthor: ChangeEventHandler;
 }
 
 /**
@@ -14,8 +15,8 @@ interface IProps {
  * @param props.post 게시물 정보 객체
  */
 export default function PostForm(props: IProps): ReactElement {
-  const { title, content } = props.post;
-  const { onChangeTitle, onChangeContent } = props;
+  const { title, content, author } = props.post;
+  const { onChangeTitle, onChangeContent, onChangeAuthor } = props;
 
   return (
     <div className="container mx-auto">
@@ -27,6 +28,15 @@ export default function PostForm(props: IProps): ReactElement {
         placeholder="게시글 제목을 입력해 주세요."
         onChange={onChangeTitle}
         value={title}
+      />
+      <DefaultInput
+        type="text"
+        name="author"
+        id="author"
+        label="Author"
+        placeholder="작성자 이름을 입력해 주세요."
+        onChange={onChangeAuthor}
+        value={author}
       />
       <DefaultTextarea
         name="content"

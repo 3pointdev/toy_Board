@@ -68,6 +68,13 @@ export default function HomePostsView({ posts, apiUrl }: IProps): ReactElement {
           return <PostItem post={post} key={`post_${key}`} />;
         })}
       </ul>
+      <div className="bg-gray-200 py-2 text-center text-sm">
+        <p className="text-gray-600">
+          {`© 2023 JANGJUNSU's Awesome Board, Inc.`}
+        </p>
+        <p className="text-gray-600">{`All rights reserved.`}</p>
+        <p className="text-gray-600">{`Contact: motors3996@gmail.com`}</p>
+      </div>
     </div>
   );
 }

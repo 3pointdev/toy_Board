@@ -11,7 +11,7 @@ interface IProps {
  * @param props.post 게시물 정보 객체
  */
 export default function PostDetail(props: IProps): ReactElement {
-  const { id, title, content, createdAt } = props.post;
+  const { id, title, content, createdAt, author } = props.post;
 
   return (
     <div className="container mx-auto">
@@ -19,6 +19,8 @@ export default function PostDetail(props: IProps): ReactElement {
       <div className="flex flex-row items-center mb-4">
         <p className="text-gray-400 text-sm mr-2">ID:</p>
         <p className="text-gray-700 text-sm">{id}</p>
+        <p className="text-gray-400 text-sm mr-2 ml-4">AUTHOR:</p>
+        <p className="text-gray-700 text-sm">{author}</p>
       </div>
       <div className="flex flex-row items-center mb-6">
         <p className="text-gray-400 text-sm mr-2">Created At:</p>

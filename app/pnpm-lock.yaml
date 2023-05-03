@@ -28,9 +28,9 @@ dependencies:
   axios:
     specifier: ^1.4.0
     version: 1.4.0
-  class-transformer:
-    specifier: ^0.5.1
-    version: 0.5.1
+  camelsnake:
+    specifier: ^2.0.0
+    version: 2.0.0
   eslint:
     specifier: 8.39.0
     version: 8.39.0
@@ -64,6 +64,11 @@ dependencies:
   typescript:
     specifier: 5.0.4
     version: 5.0.4
+
+devDependencies:
+  class-transformer:
+    specifier: ^0.5.1
+    version: 0.5.1
 
 packages:
 
@@ -659,6 +664,10 @@ packages:
     engines: {node: '>= 6'}
     dev: false
 
+  /camelsnake@2.0.0:
+    resolution: {integrity: sha512-KWzemv5I5mMCrJmwwKIF1A1+WIJw2MQuJ9IJjZOgAOD/0QuMLtXAs+tX3T8eOw1rixgyLRI+kUOlcqhm8GHrvQ==}
+    dev: false
+
   /caniuse-lite@1.0.30001481:
     resolution: {integrity: sha512-KCqHwRnaa1InZBtqXzP98LPg0ajCVujMKjqKDhZEthIpAsJl/YEIa3YvXjGXPVqzZVguccuu7ga9KOE1J9rKPQ==}
     dev: false
@@ -688,7 +697,7 @@ packages:
 
   /class-transformer@0.5.1:
     resolution: {integrity: sha512-SQa1Ws6hUbfC98vKGxZH3KFY0Y1lm5Zm0SY8XX9zbK7FJCyVEac3ATW0RIpwzW+oOfmHE5PMPufDG9hCfoEOMw==}
-    dev: false
+    dev: true
 
   /client-only@0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}

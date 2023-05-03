@@ -14,7 +14,7 @@ import DefaultButton from "src/components/button/default-button";
 import SubPageContainer from "src/components/container/sub-page-container";
 import PostForm from "src/components/post/post-form";
 import { PostDto } from "src/dto/post.dto";
-import { PostModel } from "src/model/post.dto";
+import { PostModel } from "src/model/post.model";
 
 interface IProps {
   post: PostDto;
@@ -54,6 +54,12 @@ export default function PostModifyView({ post, apiUrl }: IProps): ReactElement {
     setUpdateModel({ ...updateModel, title: value });
   };
 
+  // 게시물 작성 - 작성자 변경 이벤트
+  const onChangeAuthor = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setUpdateModel({ ...updateModel, author: value });
+  };
+
   // 게시물 수정 - 내용 변경 이벤트
   const onChangeContent = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = e.target;
@@ -71,6 +77,7 @@ export default function PostModifyView({ post, apiUrl }: IProps): ReactElement {
         post={updateModel}
         onChangeTitle={onChangeTitle}
         onChangeContent={onChangeContent}
+        onChangeAuthor={onChangeAuthor}
       />
       <div className="flex justify-center">
         <DefaultButton
