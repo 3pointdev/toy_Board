@@ -8,6 +8,7 @@ interface IProps {
   onChangeTitle: ChangeEventHandler;
   onChangeContent: ChangeEventHandler;
   onChangeAuthor: ChangeEventHandler;
+  onChangePassword?: ChangeEventHandler;
 }
 
 /**
@@ -15,8 +16,9 @@ interface IProps {
  * @param props.post 게시물 정보 객체
  */
 export default function PostForm(props: IProps): ReactElement {
-  const { title, content, author } = props.post;
-  const { onChangeTitle, onChangeContent, onChangeAuthor } = props;
+  const { title, content, author, password } = props.post;
+  const { onChangeTitle, onChangeContent, onChangeAuthor, onChangePassword } =
+    props;
 
   return (
     <div className="container mx-auto">
@@ -46,6 +48,17 @@ export default function PostForm(props: IProps): ReactElement {
         onChange={onChangeContent}
         value={content}
       />
+      {onChangePassword && (
+        <DefaultInput
+          type="text"
+          name="password"
+          id="password"
+          label="Password"
+          placeholder="비밀번호를 입력해 주세요."
+          onChange={onChangePassword}
+          value={password}
+        />
+      )}
     </div>
   );
 }

@@ -54,6 +54,12 @@ export default function PostModifyView({ apiUrl }: IProps): ReactElement {
     setNewPostModel({ ...newPostModel, content: value });
   };
 
+  // 게시물 작성 - 암호 변경 이벤트
+  const onChangePassword = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    const { value } = e.target;
+    setNewPostModel({ ...newPostModel, password: value });
+  };
+
   // 작성완료 이벤트
   const onClickComplete = (e: MouseEvent<HTMLButtonElement>) => {
     insertPost();
@@ -66,6 +72,7 @@ export default function PostModifyView({ apiUrl }: IProps): ReactElement {
         onChangeTitle={onChangeTitle}
         onChangeContent={onChangeContent}
         onChangeAuthor={onChangeAuthor}
+        onChangePassword={onChangePassword}
       />
       <div className="flex justify-center">
         <DefaultButton
