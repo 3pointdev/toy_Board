@@ -41,7 +41,7 @@ export default function handler(req, res) {
 
   // DELETE 요청일 때, 특정 댓글을 삭제합니다.
   if (method === "DELETE") {
-    const { id, password } = req.body;
+    const { id, password } = req.query;
 
     // post.json 파일을 읽어옵니다.
     const fileContents = fs.readFileSync(filePath, "utf8");
@@ -49,7 +49,13 @@ export default function handler(req, res) {
 
     // 삭제할 댓글의 인덱스를 찾습니다.
     const commentIndex = posts.comments.findIndex(
-      (comment) => comment.id === id
+      (comment) => comment.id === +id
+    );
+
+    console.log(
+      "commentIndex",
+      posts.comments[commentIndex].password,
+      password
     );
 
     // 비밀번호가 일치하지 않으면 에러를 반환합니다.

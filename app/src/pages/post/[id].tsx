@@ -126,6 +126,24 @@ export default function PostView({
       });
   };
 
+  //Comment 삭제 api
+  const deleteComment = async (commentId: number, password: string) => {
+    await axios
+      .delete(`${apiUrl}/comment?id=${commentId}&password=${password}`)
+      .then((result: AxiosResponse) => {
+        Alert.alert("댓글을 삭제했습니다.");
+        setTargetComments(
+          targetComments.filter(
+            (comment: CommentDto) => comment.id !== commentId
+          )
+        );
+      })
+      .catch((error: AxiosError) => {
+        Alert.alert("댓글삭제를 실패하였습니다.");
+        return false;
+      });
+  };
+
   //댓글작성 - 작성자 Change handler
   const onChangeCommentAuthor = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -150,6 +168,33 @@ export default function PostView({
     setNewCommentModel(new CommentModel());
   };
 
+  //댓글작성 - 작성 Click event
+  const onClickDeleteComment = (e: MouseEvent<HTMLButtonElement>) => {
+    const { id } = e.currentTarget.dataset;
+    // deleteComment(id);
+    Alert.prompt({
+      title: "삭제 하시겠습니까?",
+      inputType: "text",
+      showCancel: true,
+      placeholder: "비밀번호를 입력해 주세요.",
+      confirm: "삭제",
+      callback: (value: string) => {
+        deleteComment(+id, value);
+      },
+      error: "비밀번호가 올바르지 않습니다.",
+      validation: (value, resolve) => {
+        const targetComment = targetComments.find(
+          (comment: CommentDto) => comment.id === +id
+        );
+        if (value !== targetComment.password) {
+          resolve("비밀번호가 올바르지 않습니다.");
+        } else {
+          resolve();
+        }
+      },
+    });
+  };
+
   return (
     <SubPageContainer title={"게시물"}>
       <PostDetail post={targetPost} />
@@ -160,7 +205,10 @@ export default function PostView({
         value={newCommentModel}
         onClickInsertComment={onClickInsertComment}
       />
-      <CommentList list={targetComments} />
+      <CommentList
+        list={targetComments}
+        onClickDeleteComment={onClickDeleteComment}
+      />
       <div className="flex justify-end gap-2">
         <DefaultButton
           addClass="bg-blue-500 hover:bg-blue-600 text-white"
