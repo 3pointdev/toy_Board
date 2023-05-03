@@ -3,6 +3,12 @@
 #### 사용자는 게시글을 작성하고, 다른 사용자는 게시글에 댓글을 작성할 수 있습니다.
 #
 
+### **실행방법**
+- 프로젝트를 원하는 위치에 다운로드 합니다.
+- 프로젝트 루트경로에 [.env]()파일을 생성하고 다음과 같이 기입한 후 저장합니다.
+- NEXT_PUBLIC_API_URL=api address (로컬이라면 http://localhost:3000/api )
+- 터미널을 실행해서 pnpm run dev를 입력하고 http://localhost:portnumber로 접속합니다.
+
 ### **사용된 스택**
 - React
 - Next.js
@@ -30,6 +36,15 @@
 - Comment 작성 : 사용자는 댓글을 작성할 수 있습니다.
 
 - Comment 삭제 : 작성자 본인만 댓글을 삭제할 수 있습니다. 비밀번호가 일치하지 않으면 삭제할 수 없습니다.
+
+### **페이지설명**
+- 메인페이지</br>
+<img src="public/Images/main-page.png" width="150" height="300">
+- 게시글 상세페이지</br>
+<img src="public/Images/post-detail.png" width="150" height="300">
+- 게시글 생성 및 수정 페이지</br>
+<img src="public/Images/post-create.png" width="150" height="300">
+<img src="public/Images/post-modify.png" width="150" height="300">
 
 ### **개발자**
 - 장준수 // motors3996@gmail.com

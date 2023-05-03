@@ -94,7 +94,7 @@ export default function PostModifyView({ post, apiUrl }: IProps): ReactElement {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const postId = context.query.id;
-  const response = await axios.get<PostDto>(`${apiUrl}/post/${postId}`);
-  const post = response.data;
+  const response = await axios.get(`${apiUrl}/post/${postId}`);
+  const post = response.data.post;
   return { props: { post, apiUrl } };
 };
